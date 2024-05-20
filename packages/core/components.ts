@@ -1,4 +1,4 @@
-import { BrButton } from '../components';
+import { ERButton } from '../components';
 import type { Plugin } from 'vue';
 
-export default [BrButton] as Plugin[];
+export default [ERButton] as Plugin[];
