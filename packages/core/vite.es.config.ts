@@ -49,11 +49,11 @@ export default defineConfig({
         'async-validator'
       ],
       output: {
-        assetFileNames: (chunkInfo) => {
-          if (chunkInfo.name === 'style.css') {
+        assetFileNames: (assetsInfo) => {
+          if (assetsInfo.name === 'style.css') {
             return 'index.css';
           }
-          return chunkInfo.name as string;
+          return assetsInfo.name as string;
         },
         manualChunks(id) {
           if (id.includes('node_modules')) {

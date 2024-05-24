@@ -33,7 +33,7 @@ defineExpose<ButtonInstance>({
 </script>
 <template>
   <component
-    :autofucus="autofucus"
+    :autofocus="autofocus"
     :is="tag"
     ref="_ref"
     class="er-button"

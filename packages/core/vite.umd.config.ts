@@ -19,11 +19,11 @@ export default defineConfig({
         globals: {
           vue: 'Vue'
         },
-        assetFileNames: (chunkInfo) => {
-          if (chunkInfo.name === 'style.css') {
+        assetFileNames: (assetsInfo) => {
+          if (assetsInfo.name === 'style.css') {
             return 'index.css';
           }
-          return chunkInfo.name as string;
+          return assetsInfo.name as string;
         }
       }
     }
