@@ -1,4 +1,4 @@
 import Button from './Button.vue';
 import { withInstall } from '@boy-element/utils';
 
-export const ERButton = withInstall(Button);
+export const ErButton = withInstall(Button);

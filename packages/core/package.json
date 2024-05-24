@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build-es": "vite build --config vite.es.config.ts"
   },
   "dependencies": {
-    "@boy-element/components": "workspace:*"
+    "@boy-element/components": "workspace:*",
+    "vite-plugin-dts": "^3.9.1"
   },
   "keywords": [],
   "author": "",
