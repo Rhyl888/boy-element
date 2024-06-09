@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import { ErCollapse, ErCollapseItem } from 'boy-element';
-// import 'boy-element/dist/theme/Collapse.css';
+import 'boy-element/dist/theme/Collapse.css';
 
 type Story = StoryObj<typeof ErCollapse>;
 

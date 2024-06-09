@@ -16,19 +16,22 @@
     "jsx": "preserve",
     "jsxImportSource": "vue",
 
-
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "types": ["node"],
+    "baseUrl": "./",
+    "paths": {
+      "@boy-element/components": ["./packages/components"]
+    }
   },
   "include": [
+    "env.d.ts",
     "packages/core/index.ts",
     "packages/hooks/**/*.ts",
     "packages/utils/**/*.ts",
-    "packages/components/index.ts",
-    "packages/components/**/*.ts",
-    "packages/components/**/*.vue"
+    "packages/components/**/*.ts"
   ]
 }

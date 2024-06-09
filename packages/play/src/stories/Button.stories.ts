@@ -1,7 +1,7 @@
 import type { Meta, StoryObj, ArgTypes } from '@storybook/vue3';
 import { expect, fn, userEvent, within } from '@storybook/test';
-
 import { ErButton } from 'boy-element';
+import 'boy-element/dist/theme/Button.css';
 
 type Story = StoryObj<typeof ErButton> & { argTypes?: ArgTypes };
 
