@@ -8,7 +8,9 @@
     "story": "pnpm  --filter @boy-element/play storybook",
     "docs:dev": "pnpm --filter @boy-element/docs dev",
     "docs:build": "pnpm --filter @boy-element/docs build",
-    "test": "cross-env NODE_ENV=test pnpm --filter @boy-element/components test",
+    "test": "run-s test-utils test-hooks test-comp",
+    "test-comp": "cross-env NODE_ENV=test pnpm --filter @boy-element/components test",
+    "test-utils": "cross-env NODE_ENV=test pnpm --filter @boy-element/utils test",
     "build": "cross-env NODE_ENV=production  pnpm --filter boy-element build",
     "build:dev": "cross-env NODE_ENV=development  pnpm --filter boy-element build:watch"
   },
@@ -47,6 +49,9 @@
     "@boy-element/utils": "workspace:*",
     "boy-element": "workspace:*",
     "lodash-es": "^4.17.21",
-    "vue": "^3.4.19"
+    "@vitest/coverage-v8": "^1.4.0",
+    "@vue/test-utils": "^2.4.5",
+    "vue": "^3.4.19",
+    "jsdom": "^24.1.0"
   }
 }

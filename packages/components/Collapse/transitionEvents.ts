@@ -1,9 +1,9 @@
-const _setHeightZero = (el: HTMLElement) => (el.style.height = '0px');
+const _setHeightZero = (el: HTMLElement) => (el.style.height = "0px");
 const _setHeightScroll = (el: HTMLElement) =>
   (el.style.height = `${el.scrollHeight}px`);
-const _setHeightEmpty = (el: HTMLElement) => (el.style.height = '');
-const _setOverflowHidden = (el: HTMLElement) => (el.style.overflow = 'hidden');
-const _setOverflowEmpty = (el: HTMLElement) => (el.style.overflow = '');
+const _setHeightEmpty = (el: HTMLElement) => (el.style.height = "");
+const _setOverflowHidden = (el: HTMLElement) => (el.style.overflow = "hidden");
+const _setOverflowEmpty = (el: HTMLElement) => (el.style.overflow = "");
 
 const transitionEvents: Record<string, (el: HTMLElement) => void> = {
   beforeEnter(el) {
@@ -23,7 +23,7 @@ const transitionEvents: Record<string, (el: HTMLElement) => void> = {
   afterLeave(el) {
     _setHeightEmpty(el);
     _setOverflowEmpty(el);
-  }
+  },
 };
 
 export default transitionEvents;
