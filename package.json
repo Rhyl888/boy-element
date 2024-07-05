@@ -11,7 +11,9 @@
     "test": "run-s test-utils test-hooks test-comp",
     "test-comp": "cross-env NODE_ENV=test pnpm --filter @boy-element/components test",
     "test-utils": "cross-env NODE_ENV=test pnpm --filter @boy-element/utils test",
-    "build": "cross-env NODE_ENV=production  pnpm --filter boy-element build",
+    "build": "run-s build-hooks build-comp",
+    "build-comp": "cross-env NODE_ENV=production  pnpm --filter boy-element build",
+    "build-hooks": "cross-env NODE_ENV=production  pnpm --filter @boy-element/hooks build",
     "build:dev": "cross-env NODE_ENV=development  pnpm --filter boy-element build:watch"
   },
   "keywords": [],
@@ -40,6 +42,7 @@
     "shelljs": "^0.8.5",
     "typescript": "^5.4.5",
     "vite": "^5.2.11",
+    "vite-plugin-dts": "^3.9.1",
     "vitest": "^1.6.0",
     "vue-tsc": "^1.8.27"
   },
@@ -47,11 +50,12 @@
     "@boy-element/hooks": "workspace:*",
     "@boy-element/theme": "workspace:*",
     "@boy-element/utils": "workspace:*",
-    "boy-element": "workspace:*",
-    "lodash-es": "^4.17.21",
+    "@boy-element/vite-plugins": "workspace:*",
     "@vitest/coverage-v8": "^1.4.0",
     "@vue/test-utils": "^2.4.5",
-    "vue": "^3.4.19",
-    "jsdom": "^24.1.0"
+    "boy-element": "workspace:*",
+    "jsdom": "^24.1.0",
+    "lodash-es": "^4.17.21",
+    "vue": "^3.4.19"
   }
 }
