@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import type { TooltipProps, TooltipEmits, TooltipInstance } from "./types";
-import { createPopper, type Instance } from "@popperjs/core";
-import { bind, debounce, type DebouncedFunc } from "lodash-es";
-import { ref, watchEffect, watch, computed, onUnmounted, type Ref } from "vue";
-import { useClickOutside } from "@boy-element/hooks";
+import type { TooltipProps, TooltipEmits, TooltipInstance } from './types';
+import { createPopper, type Instance } from '@popperjs/core';
+import { bind, debounce, type DebouncedFunc } from 'lodash-es';
+import { ref, watchEffect, watch, computed, onUnmounted, type Ref } from 'vue';
+import { useClickOutside } from '@boy-element/hooks';
 
-import useEventsToTiggerNode from "./useEventsToTiggerNode";
+import useEventsToTiggerNode from './useEventsToTiggerNode';
 
 interface _TooltipProps extends TooltipProps {
   virtualRef?: HTMLElement | void;
@@ -13,14 +13,14 @@ interface _TooltipProps extends TooltipProps {
 }
 
 defineOptions({
-  name: "ErTooltip",
+  name: 'ErTooltip'
 });
 const props = withDefaults(defineProps<_TooltipProps>(), {
-  placement: "bottom",
-  trigger: "hover",
-  transition: "fade",
+  placement: 'bottom',
+  trigger: 'hover',
+  transition: 'fade',
   showTimeout: 0,
-  hideTimeout: 200,
+  hideTimeout: 200
 });
 
 const emits = defineEmits<TooltipEmits>();
@@ -45,33 +45,33 @@ const popperOptions = computed(() => ({
   placement: props.placement,
   modifiers: [
     {
-      name: "offset",
+      name: 'offset',
       options: {
-        offset: [0, 9],
-      },
-    },
+        offset: [0, 9]
+      }
+    }
   ],
-  ...props.popperOptions,
+  ...props.popperOptions
 }));
 
 const openDelay = computed(() =>
-  props.trigger === "hover" ? props.showTimeout : 0
+  props.trigger === 'hover' ? props.showTimeout : 0
 );
 const closeDelay = computed(() =>
-  props.trigger === "hover" ? props.hideTimeout : 0
+  props.trigger === 'hover' ? props.hideTimeout : 0
 );
 
 const triggerStrategyMap: Map<string, () => void> = new Map();
-triggerStrategyMap.set("hover", () => {
-  events.value["mouseenter"] = openFinal;
-  outerEvents.value["mouseleave"] = closeFinal;
-  dropdownEvents.value["mouseenter"] = openFinal;
+triggerStrategyMap.set('hover', () => {
+  events.value['mouseenter'] = openFinal;
+  outerEvents.value['mouseleave'] = closeFinal;
+  dropdownEvents.value['mouseenter'] = openFinal;
 });
-triggerStrategyMap.set("click", () => {
-  events.value["click"] = togglePopper;
+triggerStrategyMap.set('click', () => {
+  events.value['click'] = togglePopper;
 });
-triggerStrategyMap.set("contextmenu", () => {
-  events.value["contextmenu"] = (e) => {
+triggerStrategyMap.set('contextmenu', () => {
+  events.value['contextmenu'] = (e) => {
     e.preventDefault();
     openFinal();
   };
@@ -97,7 +97,7 @@ function togglePopper() {
 function setVisible(val: boolean) {
   if (props.disabled) return;
   visible.value = val;
-  emits("visible-change", val);
+  emits('visible-change', val);
 }
 
 function attachEvents() {
@@ -121,8 +121,8 @@ function resetEvents() {
   attachEvents();
 }
 
-const show: TooltipInstance["show"] = openFinal;
-const hide: TooltipInstance["hide"] = function () {
+const show: TooltipInstance['show'] = openFinal;
+const hide: TooltipInstance['hide'] = function () {
   openDebounce?.cancel();
   setVisible(false);
 };
@@ -139,7 +139,7 @@ watch(
       );
     }
   },
-  { flush: "post" }
+  { flush: 'post' }
 );
 
 watch(
@@ -158,7 +158,7 @@ watch(
   () => {
     openDebounce?.cancel();
     visible.value = false;
-    emits("visible-change", false);
+    emits('visible-change', false);
     resetEvents();
   }
 );
@@ -172,8 +172,8 @@ watchEffect(() => {
 });
 
 useClickOutside(containerNode, () => {
-  emits("click-outside");
-  if (props.trigger === "hover" || props.manual) return;
+  emits('click-outside');
+  if (props.trigger === 'hover' || props.manual) return;
 
   visible.value && closeFinal();
 });
@@ -189,7 +189,7 @@ onUnmounted(() => {
 
 defineExpose<TooltipInstance>({
   show,
-  hide,
+  hide
 });
 </script>
 
@@ -222,5 +222,5 @@ defineExpose<TooltipInstance>({
 </template>
 
 <style scoped>
-@import "./style.css";
+@import './style.css';
 </style>

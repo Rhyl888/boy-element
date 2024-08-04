@@ -11,6 +11,7 @@
     "test": "run-s test-utils test-hooks test-comp",
     "test-comp": "cross-env NODE_ENV=test pnpm --filter @boy-element/components test",
     "test-utils": "cross-env NODE_ENV=test pnpm --filter @boy-element/utils test",
+    "test-hooks": "cross-env NODE_ENV=test pnpm --filter @toy-element/hooks test",
     "build": "run-s build-hooks build-comp",
     "build-comp": "cross-env NODE_ENV=production  pnpm --filter boy-element build",
     "build-hooks": "cross-env NODE_ENV=production  pnpm --filter @boy-element/hooks build",
