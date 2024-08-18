@@ -44,7 +44,7 @@ function cancel(e: MouseEvent) {
 <template>
   <er-tooltip ref="tooltipRef" trigger="click" :hide-timeout="hideAfter">
     <template #content>
-      <div class="er-popcofirm" :style="style">
+      <div class="er-popconfirm" :style="style">
         <div class="er-popconfirm_main">
           <er-icon
             v-if="!hideIcon && icon"
@@ -54,10 +54,20 @@ function cancel(e: MouseEvent) {
           {{ title }}
         </div>
         <div class="er-popconfirm__action">
-          <er-button size="small" :type="cancelButtonType" @click="cancel">
+          <er-button
+            class="er-popconfirm_cancel"
+            size="small"
+            :type="cancelButtonType"
+            @click="cancel"
+          >
             {{ cancelButtonText }}
           </er-button>
-          <er-button size="small" :type="confirmButtonType" @click="confirm">
+          <er-button
+            class="er-popconfirm_confirm"
+            size="small"
+            :type="confirmButtonType"
+            @click="confirm"
+          >
             {{ confirmButtonText }}
           </er-button>
         </div>
